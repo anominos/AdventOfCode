@@ -1,0 +1,65 @@
+#ip 2
+
+#check
+seti 123 0 4
+bani 4 456 4
+eqri 4 72 4
+addr 4 2 2
+seti 0 0 2
+
+seti 0 5 4
+r4 = 0  
+bori 4 65536 5
+r5 = 65536
+seti 1765573 9 4
+r4 = 1765573 # 
+
+label:
+
+bani 5 255 1
+r1 = r5 % 256 ## 0
+addr 4 1 4
+r4 = r4+r1 ## 1765574
+bani 4 16777215 4
+r4 = r4 % 16777216
+muli 4 65899 4
+r4 = r4 * 65899 ## 116349561026
+bani 4 16777215 4
+r4 = r4 % 16777216 # 16345282
+gtir 256 5 1
+if r5 < 256
+    goto endend
+addr 1 2 2
+addi 2 1 2
+seti 27 0 2
+
+
+divide - r1 = r5 // r3
+    loop1:
+    seti 0 8 1
+    r1 = 0
+    addi 1 1 3
+    r3 = r1+1
+    muli 3 256 3
+    r3 = r3*256
+    gtrr 3 5 3
+    r3 = r3 > r5
+    addr 3 2 2
+
+    addi 2 1 2
+    seti 25 1 2 #goto end
+
+    addi 1 1 1
+    seti 17 7 2 #goto loop1
+
+end:
+setr 1 4 5
+r5 = r1
+seti 7 6 2 # goto label
+
+endend:
+eqrr 4 0 1
+#r0 is input
+if r4 == r0:break
+addr 1 2 2
+seti 5 2 2
