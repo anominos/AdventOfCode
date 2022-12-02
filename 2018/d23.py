@@ -1,30 +1,34 @@
-import re, sys
-sys.setrecursionlimit(8196)
-dat = []
+import re
+
+l = []
 with open("d23in.txt") as f:
-    for x in f:
-        dat.append(list(map(int, re.findall(r"(-?\d+)",x))))
-loc = max(dat, key=lambda a:a[-1])
+    for x in f.readlines():
+        a,b,c,d = re.findall(r"-?\d+", x)
+        l.append([*map(int, [a,b,c,d])])
+
+m = max(l, key=lambda a:a[-1])
 c=0
-for x in dat:
-    if sum([abs(a-b) for a,b in zip(x[:-1], loc[:-1])]) <= loc[-1]:
+
+def dist(x,y):
+    return sum(map(lambda a,b: abs(a-b), x[:-1], y[:-1]))
+
+def mid(x, y):
+    return (*map(lambda a: a/2, map(int.__add__, x, y)),)
+
+for x in range(len(l)):
+    if dist(l[x], m) <= m[-1]:
         c+=1
 print(c)
 
+edges = [set() for _ in range(len(l))]
+intersections = []
 
-def isPoss(ind, left, bounds):
-    # print(ind, left, bounds)
-    if left==0:
-        for x in range(0,6,2):
-            if bounds[x] > bounds[x+1]:
-                return False
-        return True
-    if ind >= len(dat):
-        return False
-    nb = list(bounds)
-    for x in range(3):
-        nb[x*2] = max(nb[x*2], (dat[ind][x] - dat[ind][-1]))
-        nb[x*2+1] = min(nb[x*2+1], (dat[ind][x] + dat[ind][-1]))
-    return isPoss(ind+1, left, bounds) or isPoss(ind+1, left-1, tuple(nb))
+for x in range(len(l)):
+    for y in range(x+1, len(l)):
+        if dist(l[x], l[y]) <= l[x][-1]+l[y][-1]:
+            edges[x].add(y)
+            edges[y].add(x)
+            intersections.append((*mid(l[x], l[y]), l[x][-1]+l[y][-1] - dist(l[x], l[y]) + 1))
+l = intersections
 
-start = (-float("inf"), float("inf"))*3
+print(l[:10])
