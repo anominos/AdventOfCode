@@ -17,7 +17,18 @@ with open(f"{a}/input/{b}.txt") as f:
         if x!="":
             l.append(func(x))
 
-print(len(l))
+
+c=0
+for x in l:
+    a,b = x[:len(x)//2], x[len(x)//2:]
+
+    for x in set(a)&set(b):
+        if x.islower():
+            c += ord(x) - ord("a") + 1
+        else:
+            c += ord(x) - ord("A") + 27
+print(c)
+
 c=0
 for i in range(0, len(l), 3):
     x = l[i]
