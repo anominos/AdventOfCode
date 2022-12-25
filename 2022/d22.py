@@ -55,7 +55,7 @@ def next1(cx, cy, dx, dy):
 
 
 show = []
-def do(next, log=False):
+def do(next, log=False, f=None):
     if log:
         s = [[" "]*150 for _ in range(200)]
         for y in range(len(grid)):
@@ -96,12 +96,12 @@ def do(next, log=False):
         except:
             break
         i = nxt+1
-
+        if f is not None:
+            print(cx, cy, file=f)
     print((cx+1)*1000 + (cy+1)*4 + dirs.index([dx,dy]))
 
 
 def next2(cx, cy, dx, dy):
-    # print(dx,dy,cx,cy)
     if cx+dx >= 0 and cy+dy >= 0:
         try:
             if grid[cx+dx][cy+dy]==".":
@@ -137,7 +137,7 @@ def next2(cx, cy, dx, dy):
         if 0<=cx<50:
             ret =  149-cx, 0, -dx, -dy
         elif 50<=cx<100:
-            ret =  100, cx-50, 0, 1
+            ret =  100, cx-50, 1,0
         elif 100<=cx<150:
             ret =  149-cx, 50, -dx, -dy
         elif 150<=cx<200:
@@ -149,8 +149,8 @@ def next2(cx, cy, dx, dy):
 
 
 
-import matplotlib.pyplot as plt
 def showstuff(l):
+    import matplotlib.pyplot as plt
     each = [i.copy() for i in l]
     for y in range(len(each)):
         for x in range(len(each[y])):
@@ -167,5 +167,5 @@ def showstuff(l):
 
 
 do(next1)
-
-do(next2)
+with open("debug2", "w") as f:
+    do(next2, f=f)
