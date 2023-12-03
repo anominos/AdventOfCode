@@ -40,3 +40,30 @@ Looking back, probably should have had 3 regexes, one for reds one for blues and
 Used a defaultdict and take the `max(mydict[colour], new_val_for_colour)`.
 
 </details>
+
+
+## Day 3
+
+Forgot to update duplicated code outside of loop :(.
+
+### Part 1
+
+<details>
+
+Iterate over each character of each line, and append to current number if current character is a digit. If current character is not a digit, check for adjacent symbol and then reset the current number.
+
+To check for adjacent symbol, at each digit, check the 8 adjacent squares for a square that is not '.' or a digit, and store a boolean that is True when any digit is adjacent to a symbol.
+
+</details>
+
+### Part 2
+
+<details>
+
+Store a dictionary of key=(coord of gear), value=(all adjacent part numbers as list)
+
+When checking for symbol, if any adjacent symbol is '*', add part number to dictionary.
+
+At end, iterate over dictionary and add gear ratio if exactly 2 part numbers are adjacent to the gear (length of list == 2).
+
+</details>
