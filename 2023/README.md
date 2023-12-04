@@ -67,3 +67,25 @@ When checking for symbol, if any adjacent symbol is '*', add part number to dict
 At end, iterate over dictionary and add gear ratio if exactly 2 part numbers are adjacent to the gear (length of list == 2).
 
 </details>
+
+## Day 3
+
+Accidentally read the card number as part of the first list :P.
+
+### Part 1
+
+<details>
+
+Use set union on the two lists, and add `2**length of union`. Remember to check the edge case where the length is 0.
+
+</details>
+
+### Part 2
+
+<details>
+
+Store a running counter of number of cards.
+
+When updating the counter, you can increment the range `[i+1, i+(number of winners)]` by `counter[i]` where `i` is the current card number.
+
+</details>
