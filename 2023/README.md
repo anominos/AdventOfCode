@@ -68,7 +68,7 @@ At end, iterate over dictionary and add gear ratio if exactly 2 part numbers are
 
 </details>
 
-## Day 3
+## Day 4
 
 Accidentally read the card number as part of the first list :P.
 
@@ -87,5 +87,44 @@ Use set union on the two lists, and add `2**length of union`. Remember to check 
 Store a running counter of number of cards.
 
 When updating the counter, you can increment the range `[i+1, i+(number of winners)]` by `counter[i]` where `i` is the current card number.
+
+</details>
+
+## Day 5
+
+Already starting to get tough? Oh dear.
+
+### Part 1
+
+<details>
+
+Thankfully, the mappings are already in order which they need to be applied
+
+For each map:
+
+Iterate over your current seed (or whatever)
+
+Iterate over each range in the mappings and check if your current seed is within that range.
+
+If it is, scale that seed to the new range.
+
+</details>
+
+### Part 2
+
+<details>
+
+The idea is to split each range into three for every mapping range, the bit before the mapping range, the bit inside the mapping range and the bit after the mapping range.
+
+For each mapping:
+
+iterate over the ranges in source range start order.
+
+for each range of seeds, if it intersects with the current mapping range:
+
+1) split into the three ranges described above (I will refer to them as pre, in and post)
+2) since this is the first range we encountered that intersects, we know that the pre-range does not correspond to any mapping, so add the pre-range to the next list unchanged.
+3) scale the in-range
+4) recursively apply this algorithm to the post-range, until the post-range does not intersect with any ranges, then you can add the remaining range unchanged.
 
 </details>
