@@ -2,6 +2,24 @@
 
 Another year of massacring my sleep schedule
 
+- [Advent of code 2023](#advent-of-code-2023)
+  - [Day 1](#day-1)
+    - [Part 1](#part-1)
+    - [Part 2](#part-2)
+  - [Day 2](#day-2)
+    - [Part 1](#part-1-1)
+    - [Part 2](#part-2-1)
+  - [Day 3](#day-3)
+    - [Part 1](#part-1-2)
+    - [Part 2](#part-2-2)
+  - [Day 4](#day-4)
+    - [Part 1](#part-1-3)
+    - [Part 2](#part-2-3)
+  - [Day 5](#day-5)
+    - [Part 1](#part-1-4)
+    - [Part 2](#part-2-4)
+
+
 ## Day 1
 
 ### Part 1
