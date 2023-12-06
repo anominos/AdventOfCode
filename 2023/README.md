@@ -18,6 +18,9 @@ Another year of massacring my sleep schedule
   - [Day 5](#day-5)
     - [Part 1](#part-1-4)
     - [Part 2](#part-2-4)
+  - [Day 6](#day-6)
+    - [Part 1](#part-1-5)
+    - [Part 2](#part-2-5)
 
 
 ## Day 1
@@ -144,5 +147,31 @@ for each range of seeds, if it intersects with the current mapping range:
 2) since this is the first range we encountered that intersects, we know that the pre-range does not correspond to any mapping, so add the pre-range to the next list unchanged.
 3) scale the in-range
 4) recursively apply this algorithm to the post-range, until the post-range does not intersect with any ranges, then you can add the remaining range unchanged.
+
+</details>
+
+## Day 6
+
+Can't write binary search properly smh.
+
+### Part 1
+
+<details>
+
+The times are small enough to iterate through all possible lengths to hold the button.
+
+The formula for getting the distance travelled is `(total_time - time_held) * time_held`
+
+</details>
+
+### Part 2
+
+<details>
+
+Observe that the distance travelled increases the longer you hold the button until `time_held = total_time//2` (or something similar with odd numbers), and that the distance travelled is symmetrical around that point.
+
+Binary search on half the `total_time` for the point where you start winning. You can then calculate the total number of winning states by mirroring the calculated value.
+
+NB: not sure if my code works on even times.
 
 </details>
