@@ -21,6 +21,9 @@ Another year of massacring my sleep schedule
   - [Day 6](#day-6)
     - [Part 1](#part-1-5)
     - [Part 2](#part-2-5)
+  - [Day 7](#day-7)
+    - [Part 1](#part-1-6)
+    - [Part 2](#part-2-6)
 
 
 ## Day 1
@@ -173,5 +176,37 @@ Observe that the distance travelled increases the longer you hold the button unt
 Binary search on half the `total_time` for the point where you start winning. You can then calculate the total number of winning states by mirroring the calculated value.
 
 NB: not sure if my code works on even times.
+
+Edit: Just realised that inputs are actually small, so you can still use part 1 for this XD.
+
+</details>
+
+## Day 7
+
+Poker?
+
+### Part 1
+
+<details>
+
+Use python's built in sort with a custom key.
+
+Key can return a lower number for better types of hand and a higher number for a worse type of hand, e.g. 0 for 5 of a kind, 1 for 4 of a kind etc.
+
+NB you can do it the other way round i.e. higher number for better hand, but be careful to match the second part of the key (may need to reverse list of card strengths)
+
+You can then add on a tuple to the end of the key for the second ordering rule (by getting index of each card in the list of cards sorted by strength, and having a tuple of indices)
+
+There are many ways to get the type of card. I used a combination of `len(set())` and `collections.Counter`, e.g. `len(set(a)) == 1` -> 5 of kind. The exact logic is left as an exercise to the reader (or by looking at the code).
+
+</details>
+
+### Part 2
+
+<details>
+
+First notice that having the `J`s map to the same card is always better than having them map to different cards.
+
+Iterate over all possible other cards, replace all `J`s with that card and check the resulting type of hand (using part 1). Then take the best type and use that as the type key instead.
 
 </details>
