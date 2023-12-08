@@ -24,6 +24,9 @@ Another year of massacring my sleep schedule
   - [Day 7](#day-7)
     - [Part 1](#part-1-6)
     - [Part 2](#part-2-6)
+  - [Day 7](#day-7-1)
+    - [Part 1](#part-1-7)
+    - [Part 2](#part-2-7)
 
 
 ## Day 1
@@ -208,5 +211,27 @@ There are many ways to get the type of card. I used a combination of `len(set())
 First notice that having the `J`s map to the same card is always better than having them map to different cards.
 
 Iterate over all possible other cards, replace all `J`s with that card and check the resulting type of hand (using part 1). Then take the best type and use that as the type key instead.
+
+</details>
+
+## Day 7
+
+Noooo I thought it was a search XD.
+
+### Part 1
+
+<details>
+
+Start from `AAA`, and iterate through your instruction string until you reach `ZZZ`. I used a dictionary of 2-tuples to store the tree.
+
+</details>
+
+### Part 2
+
+<details>
+
+Do part 1 on all nodes ending with `A` until they reach a node ending `Z`, to get a list of lengths.
+
+The solution is the lcm of all the numbers. To calculate this, find lcm of each term incrementally, i.e. `reduce(lcm, my_list_of_lengths, 1)`.
 
 </details>
