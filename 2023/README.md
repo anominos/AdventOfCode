@@ -183,7 +183,7 @@ Edit: Just realised that inputs are actually small, so you can still use part 1 
 
 ## Day 7
 
-Poker?
+5 Aces, ok.
 
 ### Part 1
 
