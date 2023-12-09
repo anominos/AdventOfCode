@@ -24,7 +24,7 @@ Another year of massacring my sleep schedule
   - [Day 7](#day-7)
     - [Part 1](#part-1-6)
     - [Part 2](#part-2-6)
-  - [Day 7](#day-7-1)
+  - [Day 8](#day-8)
     - [Part 1](#part-1-7)
     - [Part 2](#part-2-7)
 
@@ -214,7 +214,7 @@ Iterate over all possible other cards, replace all `J`s with that card and check
 
 </details>
 
-## Day 7
+## Day 8
 
 Noooo I thought it was a search XD.
 
