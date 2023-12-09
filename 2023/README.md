@@ -27,6 +27,9 @@ Another year of massacring my sleep schedule
   - [Day 8](#day-8)
     - [Part 1](#part-1-7)
     - [Part 2](#part-2-7)
+  - [Day 9](#day-9)
+    - [Part 1](#part-1-8)
+    - [Part 2](#part-2-8)
 
 
 ## Day 1
@@ -233,5 +236,29 @@ Start from `AAA`, and iterate through your instruction string until you reach `Z
 Do part 1 on all nodes ending with `A` until they reach a node ending `Z`, to get a list of lengths.
 
 The solution is the lcm of all the numbers. To calculate this, find lcm of each term incrementally, i.e. `reduce(lcm, my_list_of_lengths, 1)`.
+
+</details>
+
+## Day 9
+
+### Part 1
+
+<details>
+
+Use recursion to get the next value for each next value for each level of difference.
+
+The base case is when all numbers are equal, then return the number. (You can do when they are all 0 as well).
+
+Otherwise, find the 'next difference' and return the last value in your current list to this next difference.
+
+The difference array can be calculated with `np.diff`.
+
+</details>
+
+### Part 2
+
+<details>
+
+Do part 1, but subtrace the 'next difference' from the first value instead.
 
 </details>
