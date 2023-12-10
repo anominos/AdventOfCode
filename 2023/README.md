@@ -30,6 +30,9 @@ Another year of massacring my sleep schedule
   - [Day 9](#day-9)
     - [Part 1](#part-1-8)
     - [Part 2](#part-2-8)
+  - [Day 10](#day-10)
+    - [Part 1](#part-1-9)
+    - [Part 2](#part-2-9)
 
 
 ## Day 1
@@ -260,5 +263,24 @@ The difference array can be calculated with `np.diff`.
 <details>
 
 Do part 1, but subtrace the 'next difference' from the first value instead.
+
+</details>
+
+## Day 10
+
+Difficulty of problem is directly proportional to the amount of code commented out.
+
+### Part 1
+
+<details>
+
+
+
+</details>
+
+### Part 2
+
+<details>
+
 
 </details>
