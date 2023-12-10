@@ -270,11 +270,15 @@ Do part 1, but subtrace the 'next difference' from the first value instead.
 
 Difficulty of problem is directly proportional to the amount of code commented out.
 
+My implementation is awful but I cba fix it.
+
 ### Part 1
 
 <details>
 
+First determine which pipe type "S" is, by checking adjacent pipes or otherwise.
 
+Then loop around the whole loop. You can either go both ways until they meet and count the steps taken, or go around one way and divide the total length by two.
 
 </details>
 
@@ -282,5 +286,10 @@ Difficulty of problem is directly proportional to the amount of code commented o
 
 <details>
 
+It is sufficient to check if there is an odd number of vertical pipes to the left of the current square if the square is inside the loop. ([See Ray Casting Algorithm for point-in-polygon detection](https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm))
+
+E.g. Consider `|a|b|c|`, `a` and `c` have 1 and 3 vertical pipes to the left of them respectively so are inside the loop. `b` has 2 pipes to the left so is not in the loop. Note `a, b, c` are not limited to single characters, and this fact works for any loop.
+
+For the case of corners, we can treat `F--J` and `L--7` as single walls, and `F--7` and `L--J` as double walls. (Note arbitrary number of `-`s)
 
 </details>
