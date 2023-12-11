@@ -33,6 +33,9 @@ Another year of massacring my sleep schedule
   - [Day 10](#day-10)
     - [Part 1](#part-1-9)
     - [Part 2](#part-2-9)
+  - [Day 10](#day-10-1)
+    - [Part 1](#part-1-10)
+    - [Part 2](#part-2-10)
 
 
 ## Day 1
@@ -291,5 +294,33 @@ It is sufficient to check if there is an odd number of vertical pipes to the lef
 E.g. Consider `|a|b|c|`, `a` and `c` have 1 and 3 vertical pipes to the left of them respectively so are inside the loop. `b` has 2 pipes to the left so is not in the loop. Note `a, b, c` are not limited to single characters, and this fact works for any loop.
 
 For the case of corners, we can treat `F--J` and `L--7` as single walls, and `F--7` and `L--J` as double walls. (Note arbitrary number of `-`s)
+
+</details>
+
+## Day 10
+
+### Part 1
+
+<details>
+
+Decided to actually add all the new rows and columns.
+
+Check if rows are empty, and double it if so. (Use `not any()`)
+
+Rotate the list 90 degrees, and repeat the duplicating of rows.
+
+Then rotate the list 90 degrees three more times.
+
+Getting distance between all pairs can be done by `abs(x1-x2) + abs(y1-y2)`, remembering not to count each pair twice.
+
+</details>
+
+### Part 2
+
+<details>
+
+Instead of adding rows, instead store the index of empty rows and columns.
+
+When adding the coordinate of each galaxy to find distances, instead add the number of empty columns/rows preceding the current galaxy, and multiply by `999,999`.
 
 </details>
