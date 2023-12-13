@@ -33,9 +33,12 @@ Another year of massacring my sleep schedule
   - [Day 10](#day-10)
     - [Part 1](#part-1-9)
     - [Part 2](#part-2-9)
-  - [Day 10](#day-10-1)
+  - [Day 11](#day-11)
     - [Part 1](#part-1-10)
     - [Part 2](#part-2-10)
+  - [Day 12](#day-12)
+    - [Part 1](#part-1-11)
+    - [Part 2](#part-2-11)
 
 
 ## Day 1
@@ -297,7 +300,7 @@ For the case of corners, we can treat `F--J` and `L--7` as single walls, and `F-
 
 </details>
 
-## Day 10
+## Day 11
 
 ### Part 1
 
@@ -322,5 +325,32 @@ Getting distance between all pairs can be done by `abs(x1-x2) + abs(y1-y2)`, rem
 Instead of adding rows, instead store the index of empty rows and columns.
 
 When adding the coordinate of each galaxy to find distances, instead add the number of empty columns/rows preceding the current galaxy, and multiply by `999,999`.
+
+</details>
+
+
+## Day 12
+
+AintNoWay I cheesed part 2 XD.
+
+### Part 1
+
+<details>
+
+Use a recursive function to bruteforce all possibilities, pruning out invalid cases early.
+
+The inputs to the recursive function should be the current string to consider, the remaining list of groups. The function should return the number of rearrangements for the inputs. (It may be helpful to also input whether the previous character was a `.`)
+
+If the first character is `?`, replace it with both `#` and `.`, and sum the counts of each case. For when the first character is `.` or `#`, update the remaining list of groups appropriately and recurse on `current_string[1:]`.
+
+You can prune when e.g. You have a negative group (i.e. too many `#`s in a row), or when you have too many groups.
+
+</details>
+
+### Part 2
+
+<details>
+
+Use `@lru_cache` on the recursive function in part 1.
 
 </details>
