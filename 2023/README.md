@@ -39,6 +39,9 @@ Another year of massacring my sleep schedule
   - [Day 12](#day-12)
     - [Part 1](#part-1-11)
     - [Part 2](#part-2-11)
+  - [Day 13](#day-13)
+    - [Part 1](#part-1-12)
+    - [Part 2](#part-2-12)
 
 
 ## Day 1
@@ -352,5 +355,29 @@ You can prune when e.g. You have a negative group (i.e. too many `#`s in a row),
 <details>
 
 Use `@lru_cache` on the recursive function in part 1.
+
+</details>
+
+## Day 13
+
+Didn't realise the old line of symmetry could still exist pain.
+
+### Part 1
+
+<details>
+
+For each grid, iterate through all possible vertical and horizontal lines to check for a reflection.
+
+To find a horizontal reflection in a 2d array, we can iterate from `range(1, len(grid))`. We can then check if the **end** of `grid[:i]` is equal to the **start** of `grid[i:]`. This can be done with `zip()` in python.
+
+To find vertical reflections, rotate the list 90 degrees with `list(zip(*grid[::-1]))`, and find horizontal reflections as above.
+
+</details>
+
+### Part 2
+
+<details>
+
+For each grid, iterate over all elements, and check for reflections after changing only that element using part 1, while ignoring the original reflection.
 
 </details>
