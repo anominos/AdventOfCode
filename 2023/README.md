@@ -42,6 +42,9 @@ Another year of massacring my sleep schedule
   - [Day 13](#day-13)
     - [Part 1](#part-1-12)
     - [Part 2](#part-2-12)
+  - [Day 14](#day-14)
+    - [Part 1](#part-1-13)
+    - [Part 2](#part-2-13)
 
 
 ## Day 1
@@ -379,5 +382,30 @@ To find vertical reflections, rotate the list 90 degrees with `list(zip(*grid[::
 <details>
 
 For each grid, iterate over all elements, and check for reflections after changing only that element using part 1, while ignoring the original reflection.
+
+</details>
+
+
+## Day 14
+
+### Part 1
+
+<details>
+
+Iterate through each character in the grid from top to bottom. For every `O`, find the next cell above that is not `.` by iterating, and move the `O` to the last `.` before the non `.` character.
+
+</details>
+
+### Part 2
+
+<details>
+
+First, notice 1 billion is a multiple of 4, so you end on the move before a north roll.
+
+The idea is to find a cycle of stone positions after every 4 rolls (i.e. after every NWSE set of rolls).
+
+To do a single set of NWSE rolls, we can repeat the following 4 times: do part 1, then rotate the grid 90 degrees clockwise.
+
+After finding a cycle, we can predict the exact state within the cycle we end up in after our 1 billion cycles by maths.
 
 </details>
