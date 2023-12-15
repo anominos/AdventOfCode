@@ -45,6 +45,9 @@ Another year of massacring my sleep schedule
   - [Day 14](#day-14)
     - [Part 1](#part-1-13)
     - [Part 2](#part-2-13)
+  - [Day 15](#day-15)
+    - [Part 1](#part-1-14)
+    - [Part 2](#part-2-14)
 
 
 ## Day 1
@@ -407,5 +410,31 @@ The idea is to find a cycle of stone positions after every 4 rolls (i.e. after e
 To do a single set of NWSE rolls, we can repeat the following 4 times: do part 1, then rotate the grid 90 degrees clockwise.
 
 After finding a cycle, we can predict the exact state within the cycle we end up in after our 1 billion cycles by maths.
+
+</details>
+
+## Day 15
+
+### Part 1
+
+<details>
+
+Implement the specified hash function and run on the list of steps. (IDK what to write here lol)
+
+</details>
+
+### Part 2
+
+<details>
+
+Here, I used a dictionary of dictionaries to store the boxes. The outer dictionary is the box, and the inner dictionary is for the sequence of lenses. (Python `dict`s are ordered since python 3.6)
+
+To remove a lens, simply use `del` keyword on the box and label.
+
+To add/change a lens, just set the box and label to the focal length.
+
+When I say use the box and label, do `boxes_dict[HASH(label)][label]`.
+
+For the focusing power, to get the slot in a box, you can iterate over the inner dictionary in order (i.e. `enumerate(boxes_dict[x].values(), start=1)`)
 
 </details>
