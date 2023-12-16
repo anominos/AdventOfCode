@@ -48,6 +48,9 @@ Another year of massacring my sleep schedule
   - [Day 15](#day-15)
     - [Part 1](#part-1-14)
     - [Part 2](#part-2-14)
+  - [Day 16](#day-16)
+    - [Part 1](#part-1-15)
+    - [Part 2](#part-2-15)
 
 
 ## Day 1
@@ -436,5 +439,25 @@ To add/change a lens, just set the box and label to the focal length.
 When I say use the box and label, do `boxes_dict[HASH(label)][label]`.
 
 For the focusing power, to get the slot in a box, you can iterate over the inner dictionary in order (i.e. `enumerate(boxes_dict[x].values(), start=1)`)
+
+</details>
+
+## Day 16
+
+### Part 1
+
+<details>
+
+BFS over the grid. Remember to check you haven't visited the current position AND direction before processing the current node.
+
+I used a queue of (position, direction) tuples. Repeatedly pop from queue until empty. For each state, calculate the new position by adding the direction to the position, and calculate the new direction as specified in the problem statement (See match statement). Note this may generate more than one new state. For each new state, check if it has been visited before, if not append to queue.
+
+</details>
+
+### Part 2
+
+<details>
+
+Bruteforce over all starting states.
 
 </details>
