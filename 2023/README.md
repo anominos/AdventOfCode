@@ -51,6 +51,9 @@ Another year of massacring my sleep schedule
   - [Day 16](#day-16)
     - [Part 1](#part-1-15)
     - [Part 2](#part-2-15)
+  - [Day 16](#day-16-1)
+    - [Part 1](#part-1-16)
+    - [Part 2](#part-2-16)
 
 
 ## Day 1
@@ -459,5 +462,27 @@ I used a queue of (position, direction) tuples. Repeatedly pop from queue until 
 <details>
 
 Bruteforce over all starting states.
+
+</details>
+
+## Day 16
+
+### Part 1
+
+<details>
+
+The idea is to do Dijkstra's where nodes are both current position and previous direction.
+
+At each step, you can travel perpendicular to the previous direction, and you can step: 1, 2, or 3 steps. (Note this is in both perpendicular directions).
+
+In python, to implement a priority queue, you can use the builtin `heapq` and use the min-heap, discarding nodes you've already processed.
+
+</details>
+
+### Part 2
+
+<details>
+
+Instead of only being able to step 1, 2, or 3 steps, you can step [4, 10] steps instead.
 
 </details>
