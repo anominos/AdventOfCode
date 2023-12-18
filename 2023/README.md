@@ -51,9 +51,12 @@ Another year of massacring my sleep schedule
   - [Day 16](#day-16)
     - [Part 1](#part-1-15)
     - [Part 2](#part-2-15)
-  - [Day 16](#day-16-1)
+  - [Day 17](#day-17)
     - [Part 1](#part-1-16)
     - [Part 2](#part-2-16)
+  - [Day 18](#day-18)
+    - [Part 1](#part-1-17)
+    - [Part 2](#part-2-17)
 
 
 ## Day 1
@@ -465,7 +468,7 @@ Bruteforce over all starting states.
 
 </details>
 
-## Day 16
+## Day 17
 
 ### Part 1
 
@@ -484,5 +487,38 @@ In python, to implement a priority queue, you can use the builtin `heapq` and us
 <details>
 
 Instead of only being able to step 1, 2, or 3 steps, you can step [4, 10] steps instead.
+
+</details>
+
+## Day 18
+
+Didn't know about shoelace :(. I've added my implementation of a shoelace solution in my code somewhere.
+
+### Part 1
+
+<details>
+
+Ended up maintaining list of intervals at each row in a grid. The idea is that the interval doesn't change until you hit a corner, so you only need to iterate over each row containing a corner.
+
+At each row, sort the corners and pair adjacent ones. (e.g. [4, 6, 1, 8] -> [(1, 4), (6, 8)])
+We will call the previous intervals existing intervals, and the intervals generated from the corners new intervals.
+
+There are 5 cases:
+
+  1) The new interval exactly matches an existing interval, in which case the interval is deleted.
+  2) The new interval has one edge matching an existing interval, in which case shrink the existing interval to the new interval
+  3) The new interval is entirely contained within an existing interval, in which case split the existing interval into 2, with a gap of the new interval
+  4) The new interval touches two different existing intervals on either side, in which case merge the two existing intervals
+  5) None of the above, in which case add the new interval to the existing intervals.
+
+Getting the area of lines containing no corners is trivial maths. For lines containing corners, you want to find the points that are within either the previous intervals or the current intervals, which are the existing intervals before and after processing the current corners. You can do this by merging the two sets of intervals, which can be done by sorting them and merging overlapping ones.
+
+</details>
+
+### Part 2
+
+<details>
+
+Same as part 1.
 
 </details>
