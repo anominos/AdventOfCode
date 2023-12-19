@@ -57,6 +57,9 @@ Another year of massacring my sleep schedule
   - [Day 18](#day-18)
     - [Part 1](#part-1-17)
     - [Part 2](#part-2-17)
+  - [Day 19](#day-19)
+    - [Part 1](#part-1-18)
+    - [Part 2](#part-2-18)
 
 
 ## Day 1
@@ -520,5 +523,51 @@ Getting the area of lines containing no corners is trivial maths. For lines cont
 <details>
 
 Same as part 1.
+
+</details>
+
+## Day 19
+
+too lazy to use (read learn) z3.
+
+### Part 1
+
+<details>
+
+The works can be represented as a graph, with edges having conditions.
+
+Traverse the graph until you reach a "R" or "A".
+
+To check the condition, you can replace the letter with the part's value, and call `eval` on it.
+
+</details>
+
+### Part 2
+
+<details>
+
+The idea is to generate all paths in the graph, to generate a list of conditions which gets a part accepted.
+
+DFS through the graph, while maintaining a list of current conditions. At each node, for each condition, add the condition to the list of current conditions before traversing to the next node. If you do not travel on that condition, you need to add the inverse to the list of current conditions.
+
+E.g.: for the example: `ex{x>10:one,m<20:two,a>30:R,A}`
+
+Assuming your dfs call looks like: `dfs(node, list_conditions)`, you should have the following calls:
+
+`dfs(one, list_conditions + x>10)`
+
+`dfs(two, list_conditions + x<=10, m<20)`
+
+`dfs(R, list_conditions + x<=10, m>=20, a>30)`
+
+`dfs(A, list_conditions + x<=10, m>=20, a<=30)`
+
+Note at each step, the previous condition was inverted and added.
+
+When you reach `R` or `A`, you can terminate. If you terminate at `A`, add the list of conditions to an overall list.
+
+Now you should have a list of all ranges that reach an `A`. Observe that there are no overlaps between these ranges, since given any part, it must reach only 1 destination, so the path must be unique.
+
+For each set of ranges, you can work out how many values it covers, and add it to a total. You can do this by starting from the base range of [1,4000] for all values, and narrow it down based on each condition.
 
 </details>
