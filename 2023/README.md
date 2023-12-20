@@ -60,6 +60,9 @@ Another year of massacring my sleep schedule
   - [Day 19](#day-19)
     - [Part 1](#part-1-18)
     - [Part 2](#part-2-18)
+  - [Day 20](#day-20)
+    - [Part 1](#part-1-19)
+    - [Part 2](#part-2-19)
 
 
 ## Day 1
@@ -568,6 +571,43 @@ When you reach `R` or `A`, you can terminate. If you terminate at `A`, add the l
 
 Now you should have a list of all ranges that reach an `A`. Observe that there are no overlaps between these ranges, since given any part, it must reach only 1 destination, so the path must be unique.
 
-For each set of ranges, you can work out how many values it covers, and add it to a total. You can do this by starting from the base range of [1,4000] for all values, and narrow it down based on each condition.
+For each set of ranges, you can work out how many values it covers, and add it to a total. You can do this by starting from the base range of `[1, 4000]` for all values, and narrow it down based on each condition.
+
+</details>
+
+
+## Day 20
+
+Forgot graph was directed when inspecting my input with networkx. Was very confused -_-.
+
+### Part 1
+
+<details>
+
+Store the input as a graph. Also store the inverse of the graph (inputs for each node).
+
+I will use False as low and True as high.
+
+Keep track of what value each node last sent (I will refer to this as the memory). This is initialised to all False.
+
+The idea is to BFS through the graph, keeping track of the value being sent to the current node.
+
+Initialise the queue to broadcaster outputs receiving False.
+
+Dequeue the current node and its input. If the current node is a flip-flop, flip the memory and send the memory value to all children if needed. If the current node is a conjunction, check the memory of all inputs and send the corresponding pulse. Pulses are sent by enqueueing the next node and the value of the pulse i.e. True/False.
+
+You can count pulses sent when dequeueing.
+
+</details>
+
+### Part 2
+
+<details>
+
+Note: Unsure if all inputs are the same, try to read your own input first.
+
+The broadcaster sends inputs to multiple counters, which are collected at the end by `rx` when they all reach maximum value.
+
+First check the stage at which the counters get collected to see how often they pulse. You should end up with a list of primes for each counter. Then you can use Chinese Remainder Theorem to determine when they all pulse at the same time. In my case, since they all pulse at exactly a multiple of the prime, I can just find the lcm.
 
 </details>
