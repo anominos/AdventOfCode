@@ -63,6 +63,9 @@ Another year of massacring my sleep schedule
   - [Day 20](#day-20)
     - [Part 1](#part-1-19)
     - [Part 2](#part-2-19)
+  - [Day 21](#day-21)
+    - [Part 1](#part-1-20)
+    - [Part 2](#part-2-20)
 
 
 ## Day 1
@@ -609,5 +612,33 @@ Note: Unsure if all inputs are the same, try to read your own input first.
 The broadcaster sends inputs to multiple counters, which are collected at the end by `rx` when they all reach maximum value.
 
 First check the stage at which the counters get collected to see how often they pulse. You should end up with a list of primes for each counter. Then you can use Chinese Remainder Theorem to determine when they all pulse at the same time. In my case, since they all pulse at exactly a multiple of the prime, I can just find the lcm.
+
+</details>
+
+
+
+## Day 21
+
+Tried to do part 2 properly for like 3 hours and failed -_-.
+
+### Part 1
+
+<details>
+
+Do a standard BFS. Note that you don't need to keep track of visited nodes because you want to revisit them anyway.
+
+</details>
+
+### Part 2
+
+<details>
+
+Reading the input, you notice that the grid is made up of 8 triangles. Also notice the given number of steps is `131n + 65`, and your input grid size is `131`. Therefore, if you could ignore all of the walls, the shape of the reachable squares makes a diamond, and the edges of the diamond are formed by the empty diagonals in the input grid.
+
+By inspection you can quickly realise that the edges of the whole diamond will be reachable. (notice the column and row that you start in are empty)
+
+Therefore the solution is some combination of repeated patterns inside each triangle of the original grid. By trying to derive some expressions for these patterns, realise that the overall solution will be some quadratic expression in terms of `n` where `131n + 65` is the total number of steps.
+
+Therefore simulate the first few terms of the series by bruteforce using part 1, and work out the quadratic required.
 
 </details>
