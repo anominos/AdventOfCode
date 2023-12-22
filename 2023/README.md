@@ -66,6 +66,9 @@ Another year of massacring my sleep schedule
   - [Day 21](#day-21)
     - [Part 1](#part-1-20)
     - [Part 2](#part-2-20)
+  - [Day 22](#day-22)
+    - [Part 1](#part-1-21)
+    - [Part 2](#part-2-21)
 
 
 ## Day 1
@@ -640,5 +643,37 @@ By inspection you can quickly realise that the edges of the whole diamond will b
 Therefore the solution is some combination of repeated patterns inside each triangle of the original grid. By trying to derive some expressions for these patterns, realise that the overall solution will be some quadratic expression in terms of `n` where `131n + 65` is the total number of steps.
 
 Therefore simulate the first few terms of the series by bruteforce using part 1, and work out the quadratic required.
+
+</details>
+
+## Day 22
+
+Late day buff?
+
+### Part 1
+
+<details>
+
+Maintain a list of sets representing blocks, as well as an overall set of currently occupied points.
+
+Iterate over each block and check if any of the points below the current block is occupied. If all points below the current block is empty, update both the overall set of points as well as the current block to move the block one point down. Repeat until a whole iteration does not create any changes.
+
+Note that care need to be taken to ensure a block is not blocked from falling by itself (e.g. in G in the example, (1, 1, 9) shouldn't be blocked by (1, 1, 8))
+
+Then, generate a dictionary `supported_by[current block] = set of blocks supporting current block`.
+
+First create a mapping from points to blocks. Then, iterating over blocks, for each point below the current block, if the point is part of another block, add that block to the set.
+
+Then count the number of sets in the dictionary containing only one block.
+
+</details>
+
+### Part 2
+
+<details>
+
+Using the `supported_by` dict in part 1, for each brick, maintain a set of falling bricks if the current brick is removed. This can be done by iterating over `supported_by`, and if the set of supporting blocks is a subset of the currently falling blocks, add that block to the falling set. Repeat until no more changes.
+
+Remember not to count the removed block when counting falling ones.
 
 </details>
