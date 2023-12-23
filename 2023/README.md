@@ -69,6 +69,9 @@ Another year of massacring my sleep schedule
   - [Day 22](#day-22)
     - [Part 1](#part-1-21)
     - [Part 2](#part-2-21)
+  - [Day 23](#day-23)
+    - [Part 1](#part-1-22)
+    - [Part 2](#part-2-22)
 
 
 ## Day 1
@@ -675,5 +678,26 @@ Then count the number of sets in the dictionary containing only one block.
 Using the `supported_by` dict in part 1, for each brick, maintain a set of falling bricks if the current brick is removed. This can be done by iterating over `supported_by`, and if the set of supporting blocks is a subset of the currently falling blocks, add that block to the falling set. Repeat until no more changes.
 
 Remember not to count the removed block when counting falling ones.
+
+</details>
+
+
+## Day 23
+
+Why do I always BFS first...
+
+### Part 1
+
+<details>
+
+Here, you can do standard DFS/BFS on all points.
+
+</details>
+
+### Part 2
+
+<details>
+
+Here you need to find an optimisation for the search. I reduced the graph to intersections only, and did DFS on the resulting weighted graph
 
 </details>
