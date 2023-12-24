@@ -72,6 +72,10 @@ Another year of massacring my sleep schedule
   - [Day 23](#day-23)
     - [Part 1](#part-1-22)
     - [Part 2](#part-2-22)
+  - [Day 24](#day-24)
+    - [Part 1](#part-1-23)
+- [\\end{bmatrix}](#endbmatrix)
+    - [Part 2](#part-2-23)
 
 
 ## Day 1
@@ -699,5 +703,59 @@ Here, you can do standard DFS/BFS on all points.
 <details>
 
 Here you need to find an optimisation for the search. I reduced the graph to intersections only, and did DFS on the resulting weighted graph
+
+</details>
+
+## Day 24
+
+z3 abuser here.
+
+### Part 1
+
+<details>
+
+To find the intersection of two points, you want to solve the simultaneous equations:
+
+$$ px_a + vx_a  t_a = px_b + vx_b  t_b $$
+
+and a similar equation for y.
+
+We can rearrange this into the following matrix equation.
+
+$$
+\begin{bmatrix}
+vx_a & -vx_b\\
+vy_a & -vy_b
+\end{bmatrix}
+\begin{bmatrix}
+t_a\\
+t_b
+\end{bmatrix}
+=
+\begin{bmatrix}
+px_b - px_a\\
+py_b - py_a
+\end{bmatrix}
+$$
+
+We can then solve for $t_a$ and $t_b$ by taking the inverse of the 2x2 matrix, and therefore solve for x and y.
+
+We can then apply this to all pairs in the input to find the solution.
+
+</details>
+
+### Part 2
+
+<details>
+
+For each line in the input, we add the following conditions:
+$$ sp_x - p_x + (sv_x-v_x) t_i = 0 $$
+$$ sp_y - p_y + (sv_y-v_y) t_i = 0 $$
+$$ sp_z - p_z + (sv_z-v_z) t_i = 0 $$
+Where $sp$ and $sv$ are the starting position and velocity respectively. Note that each line has a different $t$.
+
+We can then solve the system of conditions in z3.
+
+I think the real solution is some funky CRT thing, but haven't thought about it yet.
 
 </details>
