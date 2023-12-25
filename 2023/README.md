@@ -76,6 +76,9 @@ Another year of massacring my sleep schedule
     - [Part 1](#part-1-23)
 - [\\end{bmatrix}](#endbmatrix)
     - [Part 2](#part-2-23)
+  - [Day 25](#day-25)
+    - [Part 1](#part-1-24)
+  - [Remarks](#remarks)
 
 
 ## Day 1
@@ -759,3 +762,23 @@ We can then solve the system of conditions in z3.
 I think the real solution is some funky CRT thing, but haven't thought about it yet.
 
 </details>
+
+## Day 25
+
+Manual method = best method
+
+### Part 1
+
+<details>
+
+Ended up drawing the networkx graph and manually extracting the necessary edges by just looking at it.
+
+To count sizes of connected components, you can do a floodfill where you DFS on unvisited nodes, and mark all nodes in the same DFS as visited at the same time.
+
+Edit: looks like networkx has a minimum_edge_cut, oops.
+
+</details>
+
+## Remarks
+
+Well, another fun year of AoC-ing (although my sleep disagrees). I think the largest take away for me is to slow down especially in the earlier ones, since most of my time ends up being due to misreading the question and bugs. For those who haven't yet, definitely learn networkx and z3 - these are probably the most useful, since learning numpy would take too long. Hopefully I'll be able to leaderboard next year then, as I've been telling myself for the past 4 years XD.
