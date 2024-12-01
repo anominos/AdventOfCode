@@ -7,8 +7,8 @@ a = "/".join(a)
 l = []
 import re
 def func(x):
-    # return [*map(int, re.findall(r"-?\d+",x)),]
-    return str((x))
+    return [*map(int, re.findall(r"-?\d+",x)),]
+    # return str((x))
 
 with open(f"{a}/input/{b}.txt") as f:
     for x in f.read().split("\n"):
@@ -18,6 +18,19 @@ with open(f"{a}/input/{b}.txt") as f:
 from collections import *
 import numpy as np
 import math
+a = []
+b = []
+for x,y in l:
+    a.append(x)
+    b.append(y)
+ans =0
+for c, d  in zip(sorted(a), sorted(b)):
+    ans += abs(c-d)
+print(ans)
 
-for x in l:
-    print(x)
+
+b = Counter(b)
+a2 = 0
+for x in a:
+    a2 += b[x] * x
+print(a2)
