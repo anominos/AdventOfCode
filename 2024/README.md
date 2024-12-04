@@ -51,6 +51,8 @@ my approach is just to overbracket a regex, then use `in` or random indices to g
 
 Edge case hunter (i didnt know/have any grid librarys)
 
+edit: idk why i didn't iterate over all diagonal dirs for part 1 lol
+
 ### Part 1
 
 We can do left/right by iterating over indices and checking `l[i][j:j+4]` is either `XMAS` or `SAMX`
