@@ -44,3 +44,26 @@ just use a regex. `\d+` will match all numbers.
 ### Part 2
 
 my approach is just to overbracket a regex, then use `in` or random indices to get the relevent parts lol.
+
+## Day 4
+
+1874/805
+
+Edge case hunter (i didnt know/have any grid librarys)
+
+### Part 1
+
+We can do left/right by iterating over indices and checking `l[i][j:j+4]` is either `XMAS` or `SAMX`
+
+We can do up/down by rotating the list `list(zip(*l[::-1]))` and doing the same as left/right
+
+For diagonals, for each index, go in a diagonal direction, add to list and check it is `XMAS`.
+
+### Part 2
+
+Iterate over indices. Check the 4 diagonally adjacent elements have 2 `M`s and 2 `S`s. Also need to check the diagonals aren't the same, so we don't have:
+```
+M.S
+.A.
+S.M
+```
