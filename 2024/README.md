@@ -72,6 +72,7 @@ S.M
 
 ## Day 5
 
+705/435
 Interesting today, theres definitely a graph theory approach (DAGs) but i cba think about it.
 
 ### Part 1
