@@ -69,3 +69,17 @@ M.S
 .A.
 S.M
 ```
+
+## Day 5
+
+Interesting today, theres definitely a graph theory approach (DAGs) but i cba think about it.
+
+### Part 1
+
+we can build a dependency dictionary as follows: `d[x]` is a list of `y`s where `y` must be before `x`.
+
+For each update, we can iterate over `update[i]` and check that none of `update[i:]` is in the dependency list of `update[i]`. If so, it is valid.
+
+### Part 2
+
+Use same algo as part 1 to find invalid updates. When we fail the condition `none of update[i:] in d[update[i]]`, for each dependency in `update[i:]`, move that element to the front of the update. Do this in a while loop until the update is valid.
