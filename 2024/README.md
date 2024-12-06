@@ -84,3 +84,20 @@ For each update, we can iterate over `update[i]` and check that none of `update[
 ### Part 2
 
 Use same algo as part 1 to find invalid updates. When we fail the condition `none of update[i:] in d[update[i]]`, for each dependency in `update[i:]`, move that element to the front of the update. Do this in a while loop until the update is valid.
+
+## Day 6
+
+617/440
+Im starting to not like grids, and i have a feeling this year will be grid heavy...
+
+### Part 1
+
+Fairly standard question. Have a position `(x, y)` and direction `(dx, dy)`, and each timestep, do position + direction `(x+dx, y+dy)`. If you hit a `#` then rotate by changing direction tuple. This is easiest done with a list of directions. Shove visited positions into a set to count without duplicates.
+
+### Part 2
+
+I thought about doing it properly, then thought "what if i could bruteforce it" lol.
+
+Turns out, setting each square in the grid to `#`, then running algorithm in part 1, but exiting when you get in a loop, and counting how many times you loop works in ~1min. im honestly impressed.
+
+I think to do it properly, you need to look at consecutive turning points and check if the 4th turning point to make a square would be blocked by another `#` or something. Im too tired to work it out tho.

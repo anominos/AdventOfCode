@@ -18,6 +18,7 @@ with open(f"{a}/input/{b}.txt") as f:
 from collections import *
 import numpy as np
 import math
+from utils import *
 
 DIAG_DIRS = [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]  # Clockwise from north for (i,j): l[di][dj]
 ADJ_DIRS = [(-1, 0), (0, 1), (1, 0), (0, -1)]  # NWSE for (i, j): l[di][dj]
