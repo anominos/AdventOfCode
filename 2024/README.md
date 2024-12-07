@@ -101,3 +101,26 @@ I thought about doing it properly, then thought "what if i could bruteforce it" 
 Turns out, setting each square in the grid to `#`, then running algorithm in part 1, but exiting when you get in a loop, and counting how many times you loop works in ~1min. im honestly impressed.
 
 I think to do it properly, you need to look at consecutive turning points and check if the 4th turning point to make a square would be blocked by another `#` or something. Im too tired to work it out tho.
+
+## Day 7
+
+The reverse of left-to-right is indeed right-to-left. good job brain
+
+### Part 1
+
+have a recursive function `func` that tells us if an array `g` can have result `ans`.
+
+Base case, if `g` is empty, true if `ans==0`, false otherwise
+
+Recursive cases:
+
+- `func(g[:-1], ans/g[-1])` if `ans` divisible by `g[-1]` (multiplication case)
+- `func(g[:-1], ans-g[-1])` if `ans > g[-1]` (addition case)
+
+Basically for each operation try to undo it from the answer if possible
+
+### Part 2
+
+Just add an extra case to our recursive part:
+
+- truncate off the last digits of `ans` if the last digits are the same as `g[-1]`
