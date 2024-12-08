@@ -124,3 +124,20 @@ Basically for each operation try to undo it from the answer if possible
 Just add an extra case to our recursive part:
 
 - truncate off the last digits of `ans` if the last digits are the same as `g[-1]`
+
+## Day 8
+
+I hate corner cases
+
+### Part 1
+
+Get pairs of antennas with same frequency. you can do this by having a map of frequency to positions and have a nested for loop.
+
+Let the two positions of antennas be `a` and `b`.
+The antinodes are at `a + (a-b)` and `b - (a-b)`.
+
+### Part 2
+
+Get pairs of antenna as above `a`, `b`.
+
+Now repeatedly add `a-b` to `a`, and repeatedly subtract `a-b` to `b` until they go out of bounds.
