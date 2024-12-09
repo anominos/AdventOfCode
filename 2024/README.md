@@ -73,6 +73,7 @@ S.M
 ## Day 5
 
 705/435
+
 Interesting today, theres definitely a graph theory approach (DAGs) but i cba think about it.
 
 ### Part 1
@@ -88,6 +89,7 @@ Use same algo as part 1 to find invalid updates. When we fail the condition `non
 ## Day 6
 
 617/440
+
 Im starting to not like grids, and i have a feeling this year will be grid heavy...
 
 ### Part 1
@@ -103,6 +105,8 @@ Turns out, setting each square in the grid to `#`, then running algorithm in par
 I think to do it properly, you need to look at consecutive turning points and check if the 4th turning point to make a square would be blocked by another `#` or something. Im too tired to work it out tho.
 
 ## Day 7
+
+770/1259
 
 The reverse of left-to-right is indeed right-to-left. good job brain
 
@@ -128,6 +132,7 @@ Just add an extra case to our recursive part:
 ## Day 8
 
 898/479
+
 I hate corner cases
 
 ### Part 1
@@ -142,3 +147,29 @@ The antinodes are at `a + (a-b)` and `b - (a-b)`.
 Get pairs of antenna as above `a`, `b`.
 
 Now repeatedly add `a-b` to `a`, and repeatedly subtract `a-b` to `b` until they go out of bounds.
+
+## Part 9
+
+426/4489.
+
+The classic do it the same way 3 times and get 3 different answers.
+
+### Part 1
+
+We know the length of the resulting file system will be the number of file blocks (`sum(l[::2])`). Call this length `len`
+
+Create an array `arr` of length `len` representing the memory. Add file IDs to the array with gaps by maintaining an index into `arr` (e.g. `0..111..`) Once the array is full, add remaining blocks into a list.
+
+Then iterating on the list in reverse order, fill in the gaps.
+
+### Part 2
+
+Create a list of tuples `(fileID, length of block)` and give free blocks `fileID=-1`.
+
+Iterate backwards over the list, trying to move used blocks to the front of this list. This can be done as follows:
+
+- Iterate backwards over the list, skipping free blocks
+- At each used block `(back_id, back_size)`, find the first free block from the start of the list `(-1, front_size)` where `front_size>=back_size`, ensuring the free block is before the used block.
+- shrink the free block and move the used block to before our free block.
+
+You can optimise this a bit by removing the free block if it shrinks to 0 size.
