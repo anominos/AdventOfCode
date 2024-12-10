@@ -173,3 +173,17 @@ Iterate backwards over the list, trying to move used blocks to the front of this
 - shrink the free block and move the used block to before our free block.
 
 You can optimise this a bit by removing the free block if it shrinks to 0 size.
+
+## Part 10
+
+300/182
+
+Theres hope maybe i dont suck
+
+### Part 1
+
+For each starting position (height=0), run bfs, ensuring you always increase height by exactly 1. If you reach a height=9, add the coord of the 9 to a set. This is the score of the trailhead. Sum all scores.
+
+### Part 2
+
+Same as above, but instead of a set, use a list.
