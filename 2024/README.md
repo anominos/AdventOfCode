@@ -148,7 +148,7 @@ Get pairs of antenna as above `a`, `b`.
 
 Now repeatedly add `a-b` to `a`, and repeatedly subtract `a-b` to `b` until they go out of bounds.
 
-## Part 9
+## Day 9
 
 426/4489.
 
@@ -174,7 +174,7 @@ Iterate backwards over the list, trying to move used blocks to the front of this
 
 You can optimise this a bit by removing the free block if it shrinks to 0 size.
 
-## Part 10
+## Day 10
 
 300/182
 
@@ -187,3 +187,28 @@ For each starting position (height=0), run bfs, ensuring you always increase hei
 ### Part 2
 
 Same as above, but instead of a set, use a list.
+
+## Day 11
+
+232/407
+
+dp dp dp dp dp dp (wait why are ppl so fast)
+
+### Part 1
+
+fairly standard. on each blink, create a new arrangement according to the rules. iterate over the list and for each element, add the new 1 or 2 stones as described.
+
+### Part 2
+
+75 is too slow to create the entire list (actually the worlds total global flops might actually be enough lol).
+
+First notice stones are independant of other stones, so in the final list, each stone only depends on one initial stone.
+
+We can write a dp function that looks at an individual number and how many blinks are left, and work out how many stones it generates in the final arrangement. e.g. `dp[num][blinks] = num produced stones`
+
+Base case: `dp[num][0] = 1`
+
+Recursive case: what happens on a blink as in part 1
+- `dp[0][blinks] = dp[1][blinks-1]`
+- `dp[ab][blinks] = dp[a][blinks-1] + dp[b][blinks-1]` where ab is a number with even digits and a, b is the split numbers
+- `dp[num][blinks] = dp[num*2024][blinks-1]` otherwise
