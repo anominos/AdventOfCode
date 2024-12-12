@@ -212,3 +212,33 @@ Recursive case: what happens on a blink as in part 1
 - `dp[0][blinks] = dp[1][blinks-1]`
 - `dp[ab][blinks] = dp[a][blinks-1] + dp[b][blinks-1]` where ab is a number with even digits and a, b is the split numbers
 - `dp[num][blinks] = dp[num*2024][blinks-1]` otherwise
+
+## Day 12
+
+923/290
+
+wait people thought part 2 was hard paus
+
+### Part 1
+
+use floodfill:
+
+1. have a global visited set starting empty.
+3. for each position in the grid, if it isn't in the visited set bfs starting from that element.
+   1. put every position you visit into the visited set
+   2. keep track of the positions you visited mapped from the starting position `pos_map[starting_pos].append(bfs_cur_pos)`
+   3. in the bfs, when you encounter an edge that you don't cross (from out of bounds or from letter is different), add that edge to a separate edges list, mapped from the starting position. the edge can be represented as (position, direction) tuple `edge_map[starting_pos].append((bfs_cur_pos, rejected_direction))`
+
+Note that 2.3. is not part of a standard floodfill.
+
+Now you have the area and perimeter of each region, being the length of the lists of `pos_map` and `edge_map` respectively
+
+### Part 2
+
+In our representation of an edge `(position, direction)`, we can group edges if:
+
+1. They have the same direction
+2. They have the same coordinate in the direction perpendicular to direction i.e. `pos.y if dir.y == 0 else pos.x` equal for all `pos` in group
+3. the differing position coordinate forms a contiguous array
+
+cba write more, go decipher `calc()` in my code `d12.py` for implementation details
