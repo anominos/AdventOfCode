@@ -242,3 +242,93 @@ In our representation of an edge `(position, direction)`, we can group edges if:
 3. the differing position coordinate forms a contiguous array
 
 cba write more, go decipher `calc()` in my code `d12.py` for implementation details
+
+## Day 13
+
+1458/279
+
+yeah i used z3 cuz i forgot there is only one solution lol
+
+### z3
+
+```
+# Create an optimizer
+opt = z3.Optimize()
+
+# Create variables
+a, b = z3.Ints("a b cost")
+
+# Add constraints
+opt.add(a*ax + b*bx == targx)
+opt.add(a*ay + b*by == targy)
+
+# Add cost calculation
+opt.add(cost == ax * 3 + by)
+
+# Minimize cost
+m = opt.minimize(cost)
+
+# Extract answer
+if opt.check() == z3.sat:
+   opt.lower(m)
+   ans = opt.model()[cost].as_long()
+```
+
+### maths
+
+You can use z3 or numpy linalg, but formally:
+
+Given $x_a, y_a, x_b, y_b, x_{targ}, y_{targ}$, we want to find $a, b$ that satisfies
+
+$$a x_a + b x_b = x_{targ}$$
+
+$$a y_a + b y_b = y_{targ}$$
+
+We can rewrite this simultaneous equations as the matrix equation
+
+$$
+\begin{pmatrix}
+x_a & x_b\\
+y_a & y_b
+\end{pmatrix}
+\begin{pmatrix}
+a\\
+b
+\end{pmatrix}
+=
+\begin{pmatrix}
+x_{targ}\\
+y_{targ}
+\end{pmatrix}
+
+$$
+
+Hence:
+$$
+\begin{pmatrix}
+x_a & x_b\\
+y_a & y_b
+\end{pmatrix} ^ {-1}
+\begin{pmatrix}
+x_{targ}\\
+y_{targ}
+\end{pmatrix}
+=
+\begin{pmatrix}
+a\\
+b
+\end{pmatrix}
+$$
+
+The inverse of a 2x2 matrix is given by:
+
+$$\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix} ^ {-1} = \frac{1}{ad-bc} \begin{pmatrix}
+d & -b\\
+-c & a
+\end{pmatrix}
+$$
+
+We only consider $a, b \in \natnums_0$
