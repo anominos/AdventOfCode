@@ -332,3 +332,20 @@ d & -b\\
 $$
 
 We only consider $a, b \in \natnums_0$
+
+## Day 14
+
+379/1271
+no way i got out-by-1 in part 2 im so silly
+
+### Part 1
+
+standard. have a list of robot states, containing a tuple of position and velocity. at each timestep, increment position by velocity.
+
+### Part 2
+
+It seems like robots repeat state every 101*103 timesteps. it was sufficient in my case to find the minimum average distance from the centre of the grid `sum((x - xmid)**2 + (y-ymid)**2 for x,y in robotposlist)`.
+
+You may also try minimum average distance from average location of points instead of centre of grid, i.e. `xmid = sum(x for x,y in robotposlist) // len(robotposlist)`
+
+See 2024/d14output.txt for an example expected output.
