@@ -349,3 +349,62 @@ It seems like robots repeat state every 101*103 timesteps. it was sufficient in 
 You may also try minimum average distance from average location of points instead of centre of grid, i.e. `xmid = sum(x for x,y in robotposlist) // len(robotposlist)`
 
 See 2024/d14output.txt for an example expected output.
+
+## Day 15
+
+58/63
+
+i got points omg
+
+### Part 1
+
+moving the robot without boxes is standard, have position tuple `(cx, cy)` and update it with direction `(dx, dy)` based on the direction string, only if the new position isn't `#`
+
+If there is a box in the way `(cx+dx, cy+dy) == "O"`, we need to find the first spot in that direction that is not a box, so will be `#` or `.`. This can be done with a while loop.
+
+If it is `#` then don't do anything. Otherwise, update the grid by:
+
+1. set the empty space after the boxes to `O`
+2. move the robot into the first box
+
+i.e. `@OO. -> @OO(O) -> (.@)OO`
+
+### Part 2
+
+After editing the grid, we need to change the box pushing.
+
+For pushing left and right, we can still consider only 1 row as with part 1, but we have to iterate to shift boxes by 1 instead of just adding a box to the end (since boxes have width=2).
+
+Iterating from the back of the box chain, swap the current character with the preceding character, until you reach the front of the box chain.
+
+Pushing up and down can push multiple boxes. The boxes we push form a binary tree, so we can use something similar to tree traversal, with `@` being the root and `[`, `]` being branches.
+
+To check whether it is possible to push the box we have the following function `check()`, which is like checking if there are no `#` in the leaves of our tree:
+
+Base cases:
+
+- `(cx, cy+dy) is '.' -> True`
+- `(cx, cy+dy) is '#' -> False`
+
+Recursive cases:
+
+- `(cx, cy+dy) is '[' -> check(cx, cy+dy) and check(cx+1, cy+dy)`
+- `(cx, cy+dy) is ']' -> check(cx, cy+dy) and check(cx-1, cy+dy)`
+
+To update boxes assuming it is possible to do so, we need to do 'post order traversal' to move subtrees out of the way before moving the current node:
+
+```
+function push(cx, cy, dy){
+  if (cx, cy+dy) is '[' {
+    push(cx, cy+dy)
+    push(cx+1, cy+dy)
+  }
+  if (cx, cy+dy) is ']' {
+    push(cx, cy+dy)
+    push(cx-1, cy+dy)
+  }
+
+  (cx, cy+dy) = (cx, cy)
+  (cx, cy) = '.'  # we want to clear this character since there may not be a box preceding this position
+}
+```
