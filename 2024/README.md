@@ -408,3 +408,43 @@ function push(cx, cy, dy){
   (cx, cy) = '.'  # we want to clear this character since there may not be a box preceding this position
 }
 ```
+
+## Day 16
+
+4327/2760
+
+spent 1hr to find out my comment had east and west swapped. i love my life
+
+### Part 1
+
+Dijkstra's
+
+consider moving forward, turning left and turning right as edges with weights 1, 1000, 1000 respectively, and the state of the reindeer (position and direction) as node.
+
+you can optimise this by only turning if the space ahead after turning is empty, but i don't think this is necessary.
+
+### Part 2
+
+We need to add a dictionary of states to possible previous states. This can be done with a modified version of dijkstra with backtracking.
+
+Make the dijkstra only terminate when all nodes have been visited (don't stop immediately after reached `E`).
+
+We need to be able to visit nodes multiple times, so have a min heap of (score, state) and allow duplicates.
+
+Maintain a dictionary `prev[state] = list of possible previous states`
+
+Instead of updating `prev[next_state] = current state` when adding next state to a priority queue (as with a standard dijkstra), every time you try to add to the min heap, if the distance is equal to the current min distance, append the current state to `prev[state]`. If the distance is strictly less than the current min distance, reset the list to only contain current state.
+
+```
+# This the main loop of a minheap variant of dijkstra
+score, u = pop min from HEAP
+for neighbour v of u
+   alt = score + weight from u->v
+   if alt < dist[v]:
+      add (alt, v) to HEAP
+      prev[v] = [u]           # maintain previous path here
+   elif alt == dist[v]
+      prev[v].append(u)       # and here
+```
+
+
