@@ -448,3 +448,41 @@ for neighbour v of u
 ```
 
 
+## Day 17
+
+
+397/35
+
+Hot take i actually like machine code problems
+
+### Part 1
+
+not much to say other than implement the spec. have a while loop that gets the current opcode and operand based from the instruction pointer. do the operation specified by the opcode as specified by spec.
+
+It is worth noting that adv, bdv and cdv are simply right shifts (`a>>operand`)
+
+### Part 2
+
+bruteforce doesn't work so you have to look at the program. writing it out in pseudocode:
+
+```
+do
+  b = a%8
+  b = b^1
+  c = a >> b
+  b ^= c
+  b ^= 4
+  a >>= 3
+  print(b%8)
+until a==0
+```
+
+We can see we are printing `b` after doing some stuff on it, and that `b` depends on only `a`, and that `a` is right shifted by 3 every iteration.
+
+Therefore the last n characters printed only depends on the first (n*3) bits of `a`.
+
+So we can just work backwards to find `a`, generating 3 bits at a time.
+
+Given `a'` that generates `output[n+1:]`, to generate `output[n:]`, we must have `a = a' * 8 + n` where `0<=n<8`.
+
+There may be multiple `n` that generate the same character, so we should consider all possibilities.
