@@ -486,3 +486,17 @@ So we can just work backwards to find `a`, generating 3 bits at a time.
 Given `a'` that generates `output[n+1:]`, to generate `output[n:]`, we must have `a = a' * 8 + n` where `0<=n<8`.
 
 There may be multiple `n` that generate the same character, so we should consider all possibilities.
+
+## Day 18
+
+178/172
+
+when will i write a template bfs
+
+### Part 1
+
+Standard bfs. would suggest having a set of blocked positions rather than a grid
+
+### Part 2
+
+edit part 1 to be a function returning true if a path exists. binary search on number of bytes to find answer.
