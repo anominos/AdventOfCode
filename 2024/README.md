@@ -500,3 +500,28 @@ Standard bfs. would suggest having a set of blocked positions rather than a grid
 ### Part 2
 
 edit part 1 to be a function returning true if a path exists. binary search on number of bytes to find answer.
+
+## Day 19
+
+285/178
+
+`lru_cache(maxsize=None)` those who know
+
+### Part 1
+
+define function `isPossible(s: string)` which says whether `s` can be made from our base patterns.
+
+Base case: true if `s` is empty string
+
+Recursive case: for each base pattern, if `s` starts with that pattern, remove that pattern from the front of s and check `isPossible(that substring of s)`. If any recursive calls are true, return true, otherwise return false.
+
+### Part 2
+
+define function `count(s: string)` similar to `isPossible`.
+
+Base case: 1 if `s` is empty string
+
+Recursive case: sum of all `count(substring)` for each substring made by removing a base pattern from the front. this should be 0 if no substrings can be made.
+
+use memoization.
+
