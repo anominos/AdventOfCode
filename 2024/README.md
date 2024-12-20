@@ -525,3 +525,34 @@ Recursive case: sum of all `count(substring)` for each substring made by removin
 
 use memoization.
 
+## Day 20
+
+1096/523
+
+idk why i thought my O(n^6) solution would be fast enough
+
+### Part 1
+
+First, precompute shortest distances from every point from the start, and same from the end by bfs.
+
+Next iterate through every wall in the grid. if it is possible to skip through the wall (i.e. `.#.` or the vertical one), the time taken using this cheat would be `distance_from_start[point before cheat] + distance_from_end[point after cheat] + 2`. Notice you can go through each cheat forwards and backwards (i.e. `S#E` (->) and `E#S` (<-)). Sum all the cheats that save >=100 time.
+
+### Part 2
+
+Each cheat is just a pair of positions that have taxicab distance of <=20.
+
+We bruteforce by iterating over all pairs of points that:
+
+- are both not walls (not `#`)
+- have taxicab distance less than 20
+
+and work out the time taken as above: `distance_from_start[cheat_start] + distance_from_end[cheat_end] + taxicab_distance(cheat_start, cheat_end)`
+
+As an optimization, notice given the first point `(sx, sy)`, the bounds of the second point `(ex, ey)` are
+
+```
+ex = [sx-20, sx+20]
+ey = [sy-20 + |sx-ex|, sy+20 - |sx-ex|]
+```
+
+(by taxicab distance constraint)
