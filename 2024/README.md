@@ -556,3 +556,42 @@ ey = [sy-20 + |sx-ex|, sy+20 - |sx-ex|]
 ```
 
 (by taxicab distance constraint)
+
+## Day 21
+
+1275/735
+
+brain too small for this
+
+### Part 1
+
+we will call the robot being controlled a level up from the robot controlling.
+
+first precompute the inputs required to go from two points for both keypads. Assume that the shortest path is optimal for example:
+
+- to move from `A -> 2`, we can have `^<A` or `<^A`
+- to move from `A -> <`, we can have `<v<A` or `v<<A`
+
+define a function that computes the following: given a sequence of inputs and the number of levels to go up, calculate the number of inputs required to generate the sequence of inputs.
+
+We will implicitly add an `A` to the start of the string, since every sequence must both start and end on `A`
+
+recurse(string, level)
+
+Base case:
+
+- `if level == 0: return len(string)`
+
+Recursive case: find the minimum chars required to generate our string from the level up, using our precomputed list of possible chars and recursing.
+
+```
+total_chars = 0
+for (start, end) in transition defined by string:
+   paths: list[str] = precomputed paths from start to end
+   total_chars += min(recurse(path, level-1)) for all paths
+return total_chars
+```
+
+### Part 2
+
+memoize the recursive function
