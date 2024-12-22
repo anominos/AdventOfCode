@@ -595,3 +595,23 @@ return total_chars
 ### Part 2
 
 memoize the recursive function
+
+## Day 22
+
+125/601
+
+i didnt see the sequence was 4 long lol.
+
+### Part 1
+
+just implement the algorithm described. worth noting you can use bit shifts instead of multiplies, but there is negligible difference.
+
+### Part 2
+
+create difference arrays (`arr[i+1]-arr[i]`) corresponding to price arrays from our part 1 generator for each monkey.
+
+have a global counter mapping from array of 4 consecutive differences to bananas gained.
+
+for each monkey, in the difference array, for each consecutive 4 differences, if it was the first time we've seen this subarray, then add it to the global counter, mapping to the corresponding gained bananas.
+
+get the maximum gained bananas from our counter.
