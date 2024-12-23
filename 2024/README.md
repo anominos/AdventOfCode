@@ -615,3 +615,25 @@ have a global counter mapping from array of 4 consecutive differences to bananas
 for each monkey, in the difference array, for each consecutive 4 differences, if it was the first time we've seen this subarray, then add it to the global counter, mapping to the corresponding gained bananas.
 
 get the maximum gained bananas from our counter.
+
+## Day 23
+
+305/320
+
+always try bruteforce lol
+
+### Part 1
+
+have a global set of connected 3s.
+
+have an adjacency list from puzzle input
+
+for each (node, list) in the adjacency list, for each pair in the list, if the pair is adjacent, then add the triple sorted(node, both nodes in our pair) to the global set.
+
+count the number of triples that contain an element starting with "t".
+
+### Part 2
+
+it is possible to bruteforce by adding 1 element (e.g. triples to 4-tuples) by checking all nodes and adding it if they are adjacent to all nodes in our existing tuple.
+
+for a more efficient implementation, use bron-kerbosch algorithm for finding maximum cliques
