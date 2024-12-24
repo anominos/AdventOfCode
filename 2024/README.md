@@ -637,3 +637,19 @@ count the number of triples that contain an element starting with "t".
 it is possible to bruteforce by adding 1 element (e.g. triples to 4-tuples) by checking all nodes and adding it if they are adjacent to all nodes in our existing tuple.
 
 for a more efficient implementation, use bron-kerbosch algorithm for finding maximum cliques
+
+## Day 24
+
+1252/595
+
+hardest problem this year by far
+
+### Part 1
+
+easy. create map from output gate to input gates and gate type `(inp1, inp2, gatetype(AND,OR,XOR))`. define recursive function to work out value of input wire. memoization is probably optional.
+
+### Part 2
+
+ended up doing this mostly by hand. obviously we have a bunch of full adders wired together. first notice all output wires (`zXX`) should come from an XOR, except for z45 since the last output is just the carry. in my input, there were 3 outputs which were not XOR. it is a reasonable guess to assume swapped wires are probably within a full adder, so manually tracing the gates can be done fairly quickly.
+
+Next notice there are some gates which cannot be input to certain types of gates. For example, XOR gates can never be input to OR gates. In my input, there were 3 instances of XORs inputting to OR gates, two of which are resolved by first check. tracing the last one gave the 4th swap required.
