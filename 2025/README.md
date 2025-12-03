@@ -26,3 +26,14 @@ Given range `[a, b]`:
 First find the smallest front bit that could be repeated. For pt 1 that would be the first half of the string if the string length is even, or `1000...` to be half the smallest final length (`len(100..) ==  (len(a)+1)//2`) if string length is odd.
 
 Then increment this front bit until the repeated number is bigger than `b`.
+
+## Day 3
+3:53/12:23
+
+dp. we love `lru_cache(maxsize=None)`
+
+part 1 you can just find the largest digit in the string (that isnt at the end) then find the largest digit that comes after the first digit.
+
+part 2 for each string `s` use `dp(i, n)` = maximum number formed from `s[i:]` taking `n` digits. base cases: `dp(i, 0) = 0`, `dp(len(s)-1, n) = invalid`
+
+as much as i like glazing lru_cache, it might be easier to manually build the 2d array since the invalid cases are probably easier.
