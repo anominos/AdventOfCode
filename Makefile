@@ -19,4 +19,4 @@ new_day:
 
 
 run:
-	@cd $(YEAR) && python -m d$(DAY)
+	@cd $(YEAR) && . ../.venv/bin/activate && python -m d$(DAY)

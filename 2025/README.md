@@ -37,3 +37,13 @@ part 1 you can just find the largest digit in the string (that isnt at the end) 
 part 2 for each string `s` use `dp(i, n)` = maximum number formed from `s[i:]` taking `n` digits. base cases: `dp(i, 0) = 0`, `dp(len(s)-1, n) = invalid`
 
 as much as i like glazing lru_cache, it might be easier to manually build the 2d array since the invalid cases are probably easier.
+
+## Day 4
+
+5:09/6:32
+
+its nice to have an array of offsets in my template.
+
+part 1 iterate over every element checking for number of adjacent `@`s.
+
+part 2 wrap part 1 in a while loop, setting forkliftable elements to `.` and keep iterating until no changes are made. its probably possible to set `.` during the iteration rather than at the end.
