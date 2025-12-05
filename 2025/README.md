@@ -47,3 +47,18 @@ its nice to have an array of offsets in my template.
 part 1 iterate over every element checking for number of adjacent `@`s.
 
 part 2 wrap part 1 in a while loop, setting forkliftable elements to `.` and keep iterating until no changes are made. its probably possible to set `.` during the iteration rather than at the end.
+
+## Day 5
+
+17:19/24:00
+
+overslept oops.
+
+part 1 iterate over the given ids, and for every id check every range to see if its in one of them
+
+part 2 maintain a list of currently processed ranges. to add a new range, we need to check for overlaps. For every already processed range `(c, d)` and new range to be added `(a, b)`, there are 4 cases:
+
+1) `c<=a<=d<=b`, then just add range `(d+1, b)`
+2) `a<=c<=b<=d`, then add range `(a, c-1)`
+3) `c<=a<=b<=d`, then dont add any range
+4) `a<=c<=d<=b`, then remove the range `(c, d)` and add `(a, b)`
