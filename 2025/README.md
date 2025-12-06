@@ -62,3 +62,12 @@ part 2 maintain a list of currently processed ranges. to add a new range, we nee
 2) `a<=c<=b<=d`, then add range `(a, c-1)`
 3) `c<=a<=b<=d`, then dont add any range
 4) `a<=c<=d<=b`, then remove the range `(c, d)` and add `(a, b)`
+
+## Day 6
+2:54/10:02
+
+me when whitespace matters
+
+part 1 just split every string by whitespace, then iterate over the rows at the same time (using zip or indices)
+
+for part 2, the right to left property can be ignored. iterate over the characters one at a time, keeping track of the current operation. you can then update the grand total either when the operation changes or you see 4 spaces
