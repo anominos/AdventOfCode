@@ -71,3 +71,15 @@ me when whitespace matters
 part 1 just split every string by whitespace, then iterate over the rows at the same time (using zip or indices)
 
 for part 2, the right to left property can be ignored. iterate over the characters one at a time, keeping track of the current operation. you can then update the grand total either when the operation changes or you see 4 spaces
+
+## Day 7
+
+3:15/5:41
+
+me when my code works first time no testing :o
+
+part 1: We only need to store active paths for each row individually, since only the row before affects the current row.
+
+copy the previous row, but replace `i` with `i+1, i-1` if you have a splitter, and remove duplicates.
+
+part 2: dp. you still only need the previous row though. store the amount of paths that reach each index in the row. for the next row, sum the count for every previous index that updates the next index
