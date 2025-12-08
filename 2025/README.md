@@ -83,3 +83,14 @@ part 1: We only need to store active paths for each row individually, since only
 copy the previous row, but replace `i` with `i+1, i-1` if you have a splitter, and remove duplicates.
 
 part 2: dp. you still only need the previous row though. store the amount of paths that reach each index in the row. for the next row, sum the count for every previous index that updates the next index
+
+## Day 8
+
+10:35/22:18
+
+probably easier approaches but i like dsu
+
+pt 1 create a distance matrix, then sort by distance and add edges to an adjacency list. then floodfill.
+
+p2 2 using suitable fill value for the floodfill (have something where `floodfill[a] = a` for some a in every connected component),
+we can use the floodfill as a DSU. Add edges to DSU until we have a single connected component, recording every merge that merges two distinct components. then just take the last recorded merge. (you can also count the components as you go along)
