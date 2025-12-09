@@ -94,3 +94,24 @@ pt 1 create a distance matrix, then sort by distance and add edges to an adjacen
 
 p2 2 using suitable fill value for the floodfill (have something where `floodfill[a] = a` for some a in every connected component),
 we can use the floodfill as a DSU. Add edges to DSU until we have a single connected component, recording every merge that merges two distinct components. then just take the last recorded merge. (you can also count the components as you go along)
+
+## Day 9
+
+2:27/2:21:02
+
+yes i spent 2 hrs. yes i hate geo.
+
+pt 1 easy, check all pairs.
+
+pt 2:
+
+For every pair, it is sufficient to check for 2 conditions:
+
+1. any point inside the rectangle is inside the shape
+2. there are no edges that cross through the rectangle
+
+1 ensures we arent in a concave and 2 ensures we don't create a hole in the rectangle.
+
+To check 2, we create lists of horizontal edges and vertical edges. For horizontal edges, we store the range of x coords [a, b], and the y coord. To check if this range crosses a rectangle, check if the y coord lies inside the rectangle's y range, and the x range overlaps the rectangle's x range. Do similar for vertical edges.
+
+To check 1, we use ray tracing algorithm, where we check if there are odd number of edges above the point. Iterate over all horizontal edges, counting edges that are above by y coord, and cover the point's x coord.
