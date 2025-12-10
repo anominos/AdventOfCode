@@ -115,3 +115,12 @@ For every pair, it is sufficient to check for 2 conditions:
 To check 2, we create lists of horizontal edges and vertical edges. For horizontal edges, we store the range of x coords [a, b], and the y coord. To check if this range crosses a rectangle, check if the y coord lies inside the rectangle's y range, and the x range overlaps the rectangle's x range. Do similar for vertical edges.
 
 To check 1, we use ray tracing algorithm, where we check if there are odd number of edges above the point. Iterate over all horizontal edges, counting edges that are above by y coord, and cover the point's x coord.
+
+## Day 10
+
+19:19/1:37:23
+
+wtf (also how is pt1 taking 20 mins im washed).
+
+part 1 just bfs. part 2 i have no idea i gave up and used z3. i'll try solve properly later
+
