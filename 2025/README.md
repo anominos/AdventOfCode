@@ -124,3 +124,13 @@ wtf (also how is pt1 taking 20 mins im washed).
 
 part 1 just bfs. part 2 i have no idea i gave up and used z3. i'll try solve properly later
 
+## Day 11
+
+6:03/10:26
+
+diff swing goes crazy
+
+part 1 is probably bruteforceable, but a dp solution looks like `num_sols[node] = number of paths to "out" from node = sum(num_sols[child] for child in node)`, with base cases `num_sols["out"]` = 1, `num_sols["any other leaf"]` = 0
+
+part 2 is dp again, keeping track of if you have visited fft and dac:
+`num_sols[node, fft, dac]` = number of paths to "out" from `node`, having already visited "fft" if `fft` is true, and similar for `dac`
