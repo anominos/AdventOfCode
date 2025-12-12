@@ -134,3 +134,11 @@ part 1 is probably bruteforceable, but a dp solution looks like `num_sols[node] 
 
 part 2 is dp again, keeping track of if you have visited fft and dac:
 `num_sols[node, fft, dac]` = number of paths to "out" from `node`, having already visited "fft" if `fft` is true, and similar for `dac`
+
+## Day 12
+
+1:21:00/1:21:06
+
+ok...
+
+i coded the backtracking solution which was obviously too slow. i tried the approximation of 8 cells per block as a joke...
